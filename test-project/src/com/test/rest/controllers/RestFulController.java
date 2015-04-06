@@ -4,6 +4,8 @@ package com.test.rest.controllers;
 import java.text.ParseException;
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,11 +17,18 @@ public class RestFulController {
  
 	//RestFulController taskmanagerservice=new RestFulController();
  
-	@RequestMapping(value="/tasks",method = RequestMethod.GET,headers="Accept=application/json")
+	@RequestMapping(value="/tasks1",method = RequestMethod.GET,headers="Accept=application/json")
 	  public String getResoinse(String value) {  
 		System.out.println("Rest Service is called:"+value);
 		return "success";
 	  }
+	@RequestMapping(value="/tasks/test/{param1}",method = RequestMethod.GET
+			,headers="Accept=application/json")
+	  public String getResponse(@PathVariable("param1")  String param1) {  
+		System.out.println("Rest Service is 123called:"+param1);
+		return "success";
+	  }
+	
 	/*
 	@RequestMapping(value="/tasks",method = RequestMethod.GET,headers="Accept=application/json")
   public List<task> getAllTasks() {  
